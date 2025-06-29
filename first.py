@@ -1,6 +1,8 @@
 print("hello \nhello")
 
 x="mukesh"
-y=5
+y="suthar"
 print(x)
 print(y)
+print(x+y)
+print(f"this is my name {x} {y}")

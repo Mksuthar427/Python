@@ -1,19 +1,34 @@
 import random
 
-print("Welcome to hangman!")
+print("🎮 Welcome to Hangman!")
 
-word = ["hacker", "bounty", "random"]
+words = ["hacker", "bounty", "random"]
+word = random.choice(words)
 
-# Ask user for one letter
-guess = input("Guess a letter: ").lower()
+guessed = "_" * len(word)
+tries = 6
 
-#random
-words = random.choice(word)
-# Loop through each word in the list
-for word in words:
- #   print(f"\nChecking word: {word}")
-    for letter in word:
-        if letter == guess:
-            print("Right")
-        else:
-            print("Wrong")
+while tries > 0 and "_" in guessed:
+    print("\nWord:", " ".join(guessed))
+    print("Tries left:", tries)
+
+    guess = input("Guess a letter: ").lower()
+
+    if guess in word:
+        print("✅ Correct!")
+        # Reveal correct letters
+        new_guessed = ""
+        for i in range(len(word)):
+            if word[i] == guess:
+                new_guessed += guess
+            else:
+                new_guessed += guessed[i]
+        guessed = new_guessed
+    else:
+        print("❌ Wrong!")
+        tries -= 1
+
+if "_" not in guessed:
+    print("\n🎉 You won! The word was:", word)
+else:
+    print("\n💀 You lost! The word was:", word)

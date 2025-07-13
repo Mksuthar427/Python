@@ -1,4 +1,4 @@
-ipaddress = input("Enter your target ip : ")
+ipaddress = input("Enter your target ip ")
 def nmap(ipaddress):
     print(f"Attacking {ipaddress}")
 
